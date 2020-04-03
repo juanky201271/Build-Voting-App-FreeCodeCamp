@@ -1,6 +1,6 @@
 const passport = require("passport")
 const TwitterStrategy = require("passport-twitter").Strategy
-const keys = require("./keys")
+//const keys = require("./keys")
 const UserTwitter = require("../models/user-twitter-model")
 
 // serialize the user.id to save in the cookie session
@@ -23,8 +23,8 @@ passport.deserializeUser((id, done) => {
 passport.use(
   new TwitterStrategy(
     {
-      consumerKey: keys.TWITTER_CONSUMER_KEY,
-      consumerSecret: keys.TWITTER_CONSUMER_SECRET,
+      consumerKey: process.env.TWITTER_CONSUMER_KEY,
+      consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
       callbackURL: "/api/auth/twitter/redirect",
       passReqToCallback : true,
     },

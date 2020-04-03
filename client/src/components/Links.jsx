@@ -21,7 +21,7 @@ class Links extends Component {
     }
   }
   _handleLogoutClick = () => {
-    window.open("http://localhost:3000/api/auth/logout", "_self")
+    window.open("http://localhost:8000/api/auth/logout", "_self")
     this.props.handleNotAuthenticated()
     this.setState({ authenticated: false, twitterId: '', user: '', })
   }

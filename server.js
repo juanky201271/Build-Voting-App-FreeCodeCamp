@@ -1,8 +1,9 @@
 const cookieSession = require("cookie-session")
 const path = require("path")
 const express = require("express")
+require("dotenv").config()
 const app = express()
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 8000
 const passport = require("passport")
 const bodyParser = require('body-parser')
 const passportSetup = require("./config/passport-setup")
@@ -11,7 +12,7 @@ const authRouter = require("./routes/auth-router-ctrl")
 const pollRouter = require('./routes/poll-router')
 const userRouter = require('./routes/user-router')
 const mongoose = require("mongoose")
-const keys = require("./config/keys")
+//const keys = require("./config/keys")
 const cors = require("cors")
 const cookieParser = require("cookie-parser")
 
@@ -22,7 +23,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 app.use(
   cookieSession({
     name: "session",
-    keys: [keys.COOKIE_KEY],
+    keys: [process.env.COOKIE_KEY],
     maxAge: 24 * 60 * 60 * 100
   })
 )
@@ -58,13 +59,6 @@ const authCheck = (req, res, next) => {
   }
 }
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build/'))
-  app.get('*', (req,res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
-  })
-}
-
 app.get("/", authCheck, (req, res) => {
   res.status(200).json({
     authenticated: true,
@@ -74,5 +68,12 @@ app.get("/", authCheck, (req, res) => {
     ip: req.ip
   })
 })
+
+//if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, "client", "build")))
+  app.get('*', (req,res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+  })
+//}
 
 app.listen(PORT, () => console.log(`Server on Port ${PORT}`))
