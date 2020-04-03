@@ -13,7 +13,8 @@
     "node": "13.9.x"
   },
   "scripts": {
-  "start": "node index.js"
+  "start": "node index.js",
+  "heroku-postbuld": "cd client && npm install && npm run build"
   },
   "dependencies": {
     "body-parser": "^1.19.0",

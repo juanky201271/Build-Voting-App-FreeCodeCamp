@@ -1,7 +1,7 @@
 const cookieSession = require("cookie-session")
 const express = require("express")
 const app = express()
-const appPort = 3000
+const PORT = process-env.PORT || 3000
 const passport = require("passport")
 const bodyParser = require('body-parser')
 const passportSetup = require("./config/passport-setup")
@@ -57,6 +57,13 @@ const authCheck = (req, res, next) => {
   }
 }
 
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build/'))
+  app.get('*', (req,res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+  })
+}
+
 app.get("/", authCheck, (req, res) => {
   res.status(200).json({
     authenticated: true,
@@ -67,4 +74,4 @@ app.get("/", authCheck, (req, res) => {
   })
 })
 
-app.listen(appPort, () => console.log(`Server on Port ${appPort}`))
+app.listen(PORT, () => console.log(`Server on Port ${appPort}`))
