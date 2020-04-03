@@ -3,7 +3,7 @@ const path = require("path")
 const express = require("express")
 require("dotenv").config()
 const app = express()
-const PORT = process.env.PORT || 8000
+const PORT = process.env.PORT || 8000 // express
 const passport = require("passport")
 const bodyParser = require('body-parser')
 const passportSetup = require("./config/passport-setup")
@@ -34,7 +34,7 @@ app.use(passport.session())
 
 app.use(
   cors({
-    origin: "http://localhost:8000", // allow to server to accept request from different origin
+    origin: "http://localhost:3000", // allow to server to accept request from different origin (React)
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true // allow session cookie from browser to pass through
   })
