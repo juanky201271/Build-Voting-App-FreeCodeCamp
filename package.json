@@ -26,5 +26,6 @@
     "nodemon": "^2.0.2",
     "passport": "^0.4.1",
     "passport-twitter": "^1.0.4"
-  }
+  },
+  "proxy": "http://localhost:3000/"
 }
