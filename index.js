@@ -1,7 +1,7 @@
 const cookieSession = require("cookie-session")
 const express = require("express")
 const app = express()
-const PORT = process-env.PORT || 3000
+const PORT = process.env.PORT || 3000
 const passport = require("passport")
 const bodyParser = require('body-parser')
 const passportSetup = require("./config/passport-setup")
@@ -74,4 +74,4 @@ app.get("/", authCheck, (req, res) => {
   })
 })
 
-app.listen(PORT, () => console.log(`Server on Port ${appPort}`))
+app.listen(PORT, () => console.log(`Server on Port ${PORT}`))
