@@ -9,6 +9,12 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": "13.9.x"
+  },
+  "scripts": {
+  "start": "node server.js"
+  },
   "dependencies": {
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
@@ -20,6 +26,5 @@
     "nodemon": "^2.0.2",
     "passport": "^0.4.1",
     "passport-twitter": "^1.0.4"
-  },
-  "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+  }
 }
