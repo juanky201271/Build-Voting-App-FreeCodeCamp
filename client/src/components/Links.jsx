@@ -26,7 +26,7 @@ class Links extends Component {
     this.setState({ authenticated: false, twitterId: '', user: '', })
   }
   _handleLoginClick = () => {
-    window.open("http://localhost:3000/api/auth/twitter", "_self")
+    window.open("http://localhost:8000/api/auth/twitter", "_self")
   }
   render() {
     console.log('links', this.state)
