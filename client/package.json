@@ -1,8 +1,8 @@
 {
   "name": "client",
   "version": "0.1.0",
-  "private": false,
-  "homepage": "/polls",
+  "private": true,
+  "proxy": "http://localhost:8000/",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -38,6 +38,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "proxy": "http://localhost:8000/"
+  }
 }
