@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: 'http://localhost:8000/api' // express
+  baseURL: '/api' // express
 })
 
 export const insertPoll = payload => api.post(`/poll`, payload)

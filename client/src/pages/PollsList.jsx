@@ -24,7 +24,7 @@ class PollsList extends Component {
     componentDidMount = async () => {
         this.setState({ isLoading: true })
 
-        await fetch("http://localhost:8000/api/auth/login/success", {
+        await fetch("/api/auth/login/success", {
           method: "GET",
           credentials: "include",
           headers: {
