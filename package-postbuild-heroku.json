@@ -4,7 +4,8 @@
   "description": "Build a Voting App",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "heroku-postbuild": "cd client && npm install && npm run-script build"
   },
   "keywords": [],
   "author": "",
