@@ -43,11 +43,13 @@ app.use(
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
+app.use(express.static(path.join(__dirname, "client", "build")))
+
 app.use('/api', pollRouter)
 app.use('/api', userRouter)
 app.use('/api', authRouter)
 
-app.use(express.static(path.join(__dirname, "client", "build")))
+
 app.get('*', (req,res) => {
   res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
 })
