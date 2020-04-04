@@ -1,6 +1,6 @@
 const router = require("express").Router()
 const passport = require("passport")
-const CLIENT_HOME_PAGE_URL = "https://bva-jccc-fcc.herokuapp.com/polls" //"http://localhost:3000/polls" // React 3000
+const CLIENT_HOME_PAGE_URL = ( process.env.MONGOLAB_YELLOW_URI ? "https://bva-jccc-fcc.herokuapp.com/polls" : "http://localhost:3000/polls" ) // React 3000
 
 // when login is successful, retrieve user info
 router.get("/auth/login/success", (req, res) => {
