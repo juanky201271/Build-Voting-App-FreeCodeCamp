@@ -20,6 +20,8 @@ const db = require('./db')
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
+app.use(express.static(path.join(__dirname, "client", "build")))
+
 app.use(
   cookieSession({
     name: "session",
@@ -42,8 +44,6 @@ app.use(
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
-
-app.use(express.static(path.join(__dirname, "client", "build")))
 
 app.use('/api', pollRouter)
 app.use('/api', userRouter)
