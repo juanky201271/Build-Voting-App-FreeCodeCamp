@@ -24,7 +24,7 @@ class PollsList extends Component {
     componentDidMount = async () => {
         this.setState({ isLoading: true })
 
-        await fetch("/api/auth/login/success", {
+        await fetch("https://bva-jccc-fcc.herokuapp.com/api/auth/login/success", {
           method: "GET",
           credentials: "include",
           headers: {
