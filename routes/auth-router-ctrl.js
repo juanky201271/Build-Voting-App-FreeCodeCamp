@@ -33,7 +33,6 @@ router.get("/auth/login/failed", (req, res) => {
 
 // When logout, redirect to client
 router.get("/auth/logout", (req, res) => {
-  console.log('logout', url)
   req.logout()
   res.redirect(CLIENT_HOME_PAGE_URL)
 })
@@ -43,7 +42,6 @@ router.get("/auth/twitter", passport.authenticate("twitter"))
 
 // redirect to home page after successfully login via twitter
 router.get("/auth/twitter/redirect", (req, res) => {
-  console.log('login', url)
   passport.authenticate("twitter", {
     successRedirect: CLIENT_HOME_PAGE_URL,
     failureRedirect: "/auth/login/failed"
