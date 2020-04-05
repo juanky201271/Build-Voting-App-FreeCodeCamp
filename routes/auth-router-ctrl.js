@@ -1,6 +1,12 @@
 const router = require("express").Router()
 const passport = require("passport")
-const CLIENT_HOME_PAGE_URL = '/polls'
+const url = require("url")
+const urlRedirect =  url.format({
+    protocol: req.protocol,
+    host: req.get('host'),
+    pathname: req.originalUrl,
+})
+const CLIENT_HOME_PAGE_URL = urlRedirect.protocol + "://" + urlRedirect.host
 // ( !process.env.MONGOLAB_YELLOW_URI ? "http://localhost:3000/polls" : "https://bva-jccc-fcc.herokuapp.com/polls" ) // React 3000
 
 // when login is successful, retrieve user info
@@ -33,11 +39,9 @@ router.get("/auth/login/failed", (req, res) => {
 
 // When logout, redirect to client
 router.get("/auth/logout", (req, res) => {
-  const url = "/" //req.protocol + '://' + req.get('host') + req.originalUrl
   console.log('logout', url)
   req.logout()
-  //res.redirect(CLIENT_HOME_PAGE_URL)
-  res.redirect(url)
+  res.redirect(CLIENT_HOME_PAGE_URL)
 })
 
 // auth with twitter
@@ -45,11 +49,9 @@ router.get("/auth/twitter", passport.authenticate("twitter"))
 
 // redirect to home page after successfully login via twitter
 router.get("/auth/twitter/redirect", (req, res) => {
-  const url = "/" //req.protocol + '://' + req.get('host') + req.originalUrl
   console.log('login', url)
   passport.authenticate("twitter", {
-    //successRedirect: CLIENT_HOME_PAGE_URL,
-    successRedirect: url,
+    successRedirect: CLIENT_HOME_PAGE_URL,
     failureRedirect: "/auth/login/failed"
   })
 })
