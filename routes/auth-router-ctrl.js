@@ -1,12 +1,6 @@
 const router = require("express").Router()
 const passport = require("passport")
-const url = require("url")
-const urlRedirect =  url.format({
-    protocol: req.protocol,
-    host: req.get('host'),
-    pathname: req.originalUrl,
-})
-const CLIENT_HOME_PAGE_URL = urlRedirect.protocol + "://" + urlRedirect.host
+const CLIENT_HOME_PAGE_URL = "https://bva-jccc-fcc.herokuapp.com/polls"
 // ( !process.env.MONGOLAB_YELLOW_URI ? "http://localhost:3000/polls" : "https://bva-jccc-fcc.herokuapp.com/polls" ) // React 3000
 
 // when login is successful, retrieve user info
