@@ -65,7 +65,19 @@ class App extends Component {
       })
   }
   addUserIp = async () => {
-    const { ip } = this.state || ''
+    var ip = ''
+    await fetch("ip4only.me/api")
+    .then(response => {
+      if (response.status === 200) return response.text()
+      throw new Error("failed to find client ip")
+    })
+    .then(responseText => {
+      ip = responseText.spli(',')[1]
+    })
+    .catch(error => {
+      console.log(error)
+    })
+
     if (ip) {
       const currentUser = await api.getUserByIp(ip).catch(err => console.log(err))
       if (!currentUser) {

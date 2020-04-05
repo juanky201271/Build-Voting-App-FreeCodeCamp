@@ -10,7 +10,7 @@ createUser = async (req, res) => {
     return res.status(400).json({ success: false, error: 'You must provide a user', })
   }
   const bodyAdd = {
-    ip: req.ip,
+    ip: body.ip,
     votes: [],
   }
   const user = new User(bodyAdd)
@@ -26,7 +26,7 @@ createUser = async (req, res) => {
       return res.status(201).json({
         success: true,
         _id: user._id,
-        ip: req.ip,
+        ip: user.ip,
         message: 'User created!',
       })
     })
@@ -56,7 +56,7 @@ updateUserById = async (req, res) => {
           return res.status(201).json({
             success: true,
             _id: user._id,
-            ip: req.ip,
+            ip: user.ip,
             message: 'User updated!',
           })
         })
@@ -90,7 +90,7 @@ updateUserByIp = async (req, res) => {
           return res.status(201).json({
             success: true,
             _id: user._id,
-            ip: req.ip,
+            ip: user.ip,
             message: 'User updated!',
           })
         })
@@ -204,7 +204,6 @@ updateUserByTwitterId = async (req, res) => {
           return res.status(201).json({
             success: true,
             twitterId: userTwitter.twitterId,
-            ip: req.ip,
             message: 'User updated!',
           })
         })
