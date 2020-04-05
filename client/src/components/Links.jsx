@@ -21,12 +21,12 @@ class Links extends Component {
     }
   }
   _handleLogoutClick = () => {
-    window.open("http://localhost:8000/api/auth/logout", "_self") // express
+    window.open("https://bva-jccc-fcc.herokuapp.com/api/auth/logout", "_self") // express
     this.props.handleNotAuthenticated()
     this.setState({ authenticated: false, twitterId: '', user: '', })
   }
   _handleLoginClick = () => {
-    window.open("http://localhost:8000/api/auth/twitter", "_self")
+    window.open("https://bva-jccc-fcc.herokuapp.com/api/auth/twitter", "_self")
   }
   render() {
     console.log('links', this.state)

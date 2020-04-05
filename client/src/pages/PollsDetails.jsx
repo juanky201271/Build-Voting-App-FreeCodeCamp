@@ -219,7 +219,7 @@ class PollsDetails extends Component {
         console.log('details', this.state)
         const { question, answersHtml, _id } = this.state
         const url = 'https://twitter.com/intent/tweet?url=' +
-                    'http://localhost:8000/poll/details/' +
+                    'https://bva-jccc-fcc.herokuapp.com/poll/details/' +
                     this.props.match.params._id +
                     '&text=' +
                     question +
