@@ -17,6 +17,6 @@ userRouter.put('/usertwitter/id/:twitterId', UserCtrl.updateUserByTwitterId)
 userRouter.get('/usertwitter/id/:twitterId', UserCtrl.getUserByTwitterId)
 userRouter.get('/userstwitter', UserCtrl.getUsersTwitter)
 
-userRouter .get('/ip', UserCtrl.getIp)
+userRouter.get('/ip', UserCtrl.getIp)
 
 module.exports = userRouter
