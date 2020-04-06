@@ -56,7 +56,24 @@ class App extends Component {
         console.log(error)
       })
 
-      const ip = api.getIp()
+      var ip = ''
+      await fetch('https://geoip-db.com/json')
+            .then(response => {
+              if (response.ok) {
+                return response.json()
+              } else {
+                throw new Error('Something went wrong with the ip...')
+              }
+            })
+            .then(data => {
+              ip = data.IPv4
+              this.setState({ hits: data.IPv4, isLoading: false })
+            })
+            .catch(error => {
+              console.log(error)
+              this.setState({ error, isLoading: false })
+            })
+
       console.log('ip', ip)
       if (ip) await this.addUserIp(ip)
 

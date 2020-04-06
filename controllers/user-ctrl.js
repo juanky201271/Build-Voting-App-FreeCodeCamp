@@ -244,28 +244,6 @@ getUsersTwitter = async (req, res) => {
     })
 }
 
-getIp = async (req, res) => {
-  const ip = await fetch("http://ip4only.me/api", { // express
-    method: "GET"
-  })
-  .then(response => {
-    if (response.status === 200) return response.text()
-    throw new Error("failed to find client ip")
-  })
-  .then(responseText => {
-    return responseText.split(',')[1] || ''
-  })
-  .catch(error => {
-    console.log(error)
-  })
-
-  if (ip) {
-    return res.status(200).json({ success: true, data: {ip: ip}})
-  } else {
-    return res.status(400).json({ success: false, error: 'ip not found', })
-  }
-}
-
 module.exports = {
   createUser,
   updateUserById,
