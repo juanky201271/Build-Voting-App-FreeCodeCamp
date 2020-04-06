@@ -19,6 +19,7 @@ class App extends Component {
     }
   }
   componentDidMount = async () => {
+    var ip = ''
     this.setState({
       isLoading: true,
     })
@@ -56,31 +57,34 @@ class App extends Component {
         console.log(error)
       })
 
-      this.addUserIp()
+      await fetch("ip4only.me/api", { // express
+        method: "GET"
+      })
+      .then(response => {
+        if (response.status === 200) return response.text()
+        throw new Error("failed to find client ip")
+      })
+      .then(responseText => {
+        console.log(responseText)
+        ip = responseText.spli(',')[1] || ''
+        this.setState({
+          ip: ip,
+        })
+      })
+      .catch(error => {
+        console.log(error)
+      })
+
+      this.addUserIp(ip)
 
       this.setState({
         isLoading: false,
       })
   }
   addUserIp = async () => {
-    var ip = ''
-    await fetch("ip4only.me/api")
-    .then(response => {
-      if (response.status === 200) return response.text()
-      throw new Error("failed to find client ip")
-    })
-    .then(responseText => {
-      console.log(responseText)
-      ip = responseText.spli(',')[1] || ''
-    })
-    .catch(error => {
-      console.log(error)
-    })
     console.log('ip', ip)
     if (ip) {
-      this.setState({
-        ip: ip,
-      })
+
       const currentUser = await api.getUserByIp(ip).catch(err => console.log(err))
       if (!currentUser) {
         //console.log('New User')
