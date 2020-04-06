@@ -70,6 +70,7 @@ class App extends Component {
       throw new Error("failed to find client ip")
     })
     .then(responseText => {
+      comsole.log(responseText)
       ip = responseText.spli(',')[1] || ''
     })
     .catch(error => {
