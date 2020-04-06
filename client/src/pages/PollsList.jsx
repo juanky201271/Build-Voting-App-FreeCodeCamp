@@ -24,6 +24,7 @@ class PollsList extends Component {
     componentDidMount = async () => {
         this.setState({ isLoading: true })
 
+        var ip = ''
         await fetch("https://bva-jccc-fcc.herokuapp.com/api/auth/login/success", {
           method: "GET",
           credentials: "include",
@@ -39,18 +40,20 @@ class PollsList extends Component {
             throw new Error("failed to authenticate user")
           })
           .then(responseJson => {
-
+            ip = responseJson.ip
             if (responseJson.success === true) {
               this.setState({
                 authenticated: true,
                 twitterId: responseJson.user.twitterId,
                 user: responseJson.user,
+                ip: responseJson.ip,
               })
             } else {
               this.setState({
                 authenticated: false,
                 twitterId: '',
                 user: '',
+                ip: responseJson.ip,
               })
             }
           })
@@ -58,26 +61,7 @@ class PollsList extends Component {
             console.log(error)
           })
 
-        var ip = ''
-        await fetch('https://geoip-db.com/json')
-              .then(response => {
-                if (response.ok) {
-                  return response.json()
-                } else {
-                  throw new Error('Something went wrong with the ip...')
-                }
-              })
-              .then(data => {
-                ip = data.IPv4
-                this.setState({ hits: data.IPv4, isLoading: false })
-              })
-              .catch(error => {
-                console.log(error)
-                this.setState({ error, isLoading: false })
-              })
-
-        console.log('ip', ip)
-        if (ip) await this.addUserIp(ip)
+        await this.addUserIp(ip)
 
         await api.getAllPolls().then(polls => {
             this.setState({
@@ -90,25 +74,8 @@ class PollsList extends Component {
         })
 
     }
-    addUserIp = async () => {
-      var ip = ''
-      await fetch("ip4only.me/api")
-      .then(response => {
-        if (response.status === 200) return response.text()
-        throw new Error("failed to find client ip")
-      })
-      .then(responseText => {
-        console.log(responseText)
-        ip = responseText.spli(',')[1] || ''
-      })
-      .catch(error => {
-        console.log(error)
-      })
-      console.log('ip', ip)
+    addUserIp = async (ip) => {
       if (ip) {
-        this.setState({
-          ip: ip,
-        })
         const currentUser = await api.getUserByIp(ip).catch(err => console.log(err))
         if (!currentUser) {
           //console.log('New User')

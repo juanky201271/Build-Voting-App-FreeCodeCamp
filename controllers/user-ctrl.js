@@ -14,6 +14,16 @@ createUser = async (req, res) => {
     return res.status(400).json({ success: false, error: 'You must provide a correct json user', })
   }
 
+  var ipAddr = req.headers["x-forwarded-for"]
+  if (ipAddr){
+    var list = ipAddr.split(",")
+    ipAddr = list[list.length-1]
+  } else {
+    ipAddr = req.connection.remoteAddress
+  }
+
+  user.ip = ipAddr
+
   await user
     .save()
   //await User.init()
