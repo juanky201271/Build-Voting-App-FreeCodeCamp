@@ -79,7 +79,7 @@ class PollsList extends Component {
         throw new Error("failed to find client ip")
       })
       .then(responseText => {
-        ip = responseText.spli(',')[1]
+        ip = responseText.spli(',')[1] || ''
       })
       .catch(error => {
         console.log(error)
