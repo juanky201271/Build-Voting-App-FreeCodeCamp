@@ -9,11 +9,7 @@ createUser = async (req, res) => {
   if (!body) {
     return res.status(400).json({ success: false, error: 'You must provide a user', })
   }
-  const bodyAdd = {
-    ip: body.ip,
-    votes: [],
-  }
-  const user = new User(bodyAdd)
+  const user = new User(body)
   if (!user) {
     return res.status(400).json({ success: false, error: 'You must provide a correct json user', })
   }

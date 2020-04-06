@@ -11,13 +11,11 @@ router.get("/auth/login/success", (req, res) => {
       message: "user has successfully authenticated",
       user: req.user,
       cookies: req.cookies,
-      ip: req.ip
     })
   } else {
     res.json({
       success: false,
       message: "user hasn't authenticated",
-      ip: req.ip
     })
   }
 })
@@ -27,7 +25,6 @@ router.get("/auth/login/failed", (req, res) => {
   res.status(401).json({
     success: false,
     message: "user failed to authenticate.",
-    ip: req.ip
   })
 })
 

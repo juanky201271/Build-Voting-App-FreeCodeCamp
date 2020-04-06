@@ -12,15 +12,14 @@ createPoll = async (req, res) => {
   if (!poll) {
     return res.status(400).json({ success: false, error: 'You must provide a correct json poll', })
   }
-  // body with question, answers and twitterId
-  poll.ip = req.ip
+  // body with question, answers, ip and twitterId
   await poll
     .save()
     .then(() => {
       return res.status(201).json({
         success: true,
         _id: poll._id,
-        ip: req.ip,
+        ip: poll.ip,
         message: 'Poll created!',
       })
     })
@@ -51,7 +50,7 @@ updatePoll = async (req, res) => {
           return res.status(201).json({
             success: true,
             _id: poll._id,
-            ip: req.ip,
+            ip: poll.ip,
             message: 'Poll updated!',
           })
         })

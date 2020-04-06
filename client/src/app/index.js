@@ -42,14 +42,12 @@ class App extends Component {
           this.setState({
             authenticated: true,
             twitterId: responseJson.user.twitterId,
-            ip: responseJson.ip,
             user: responseJson.user,
           })
         } else {
           this.setState({
             authenticated: false,
             twitterId: '',
-            ip: responseJson.ip,
             user: '',
           })
         }
@@ -77,8 +75,11 @@ class App extends Component {
     .catch(error => {
       console.log(error)
     })
-
+    console.log('ip', ip)
     if (ip) {
+      this.setState({
+        ip: ip,
+      })
       const currentUser = await api.getUserByIp(ip).catch(err => console.log(err))
       if (!currentUser) {
         //console.log('New User')
