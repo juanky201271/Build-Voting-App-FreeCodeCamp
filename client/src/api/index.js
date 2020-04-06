@@ -23,6 +23,8 @@ export const getAllUsersTwitter = () => api.get(`/userstwitter`)
 export const updateUserByTwitterId = (twitterId, payload) => api.put(`/usertwitter/id/${twitterId}`, payload)
 export const getUserByTwitterId = twitterId => api.get(`/usertwitter/id/${twitterId}`)
 
+export const getIp = () => api.get(`/ip`)
+
 const apis = {
     insertPoll,
     getAllPolls,
