@@ -57,7 +57,7 @@ class App extends Component {
         console.log(error)
       })
 
-      await fetch("ip4only.me/api", { // express
+      await fetch("http://ip4only.me/api", { // express
         method: "GET"
       })
       .then(response => {
