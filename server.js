@@ -36,7 +36,7 @@ app.use(passport.session())
 
 app.use(
   cors({
-    origin: "https://bva-jccc-fcc.herokuapp.com", // "http://localhost:3000",  // allow to server to accept request from different origin (React)
+    origin: ["https://bva-jccc-fcc.herokuapp.com","https://api.twitter.com"], // "http://localhost:3000",  // allow to server to accept request from different origin (React)
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true // allow session cookie from browser to pass through
   })
