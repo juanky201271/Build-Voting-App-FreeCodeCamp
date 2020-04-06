@@ -20,8 +20,6 @@ const db = require('./db')
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
-app.use(express.static(path.join(__dirname, "client", "build")))
-
 app.use(
   cookieSession({
     name: "session",
@@ -35,11 +33,13 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 app.use(
-  cors({
-    origin: ["https://bva-jccc-fcc.herokuapp.com","https://api.twitter.com"], // "http://localhost:3000",  // allow to server to accept request from different origin (React)
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true // allow session cookie from browser to pass through
-  })
+  cors(
+    //{
+    //origin: ["https://bva-jccc-fcc.herokuapp.com","https://api.twitter.com"], // "http://localhost:3000",  // allow to server to accept request from different origin (React)
+    //methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    //credentials: true // allow session cookie from browser to pass through
+    //}
+  )
 )
 
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -49,7 +49,7 @@ app.use('/api', pollRouter)
 app.use('/api', userRouter)
 app.use('/api', authRouter)
 
-
+app.use(express.static(path.join(__dirname, "client", "build")))
 app.get('*', (req,res) => {
   res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
 })

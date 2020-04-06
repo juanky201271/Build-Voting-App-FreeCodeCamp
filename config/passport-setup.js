@@ -1,6 +1,5 @@
 const passport = require("passport")
 const TwitterStrategy = require("passport-twitter").Strategy
-//const keys = require("./keys")
 const UserTwitter = require("../models/user-twitter-model")
 
 // serialize the user.id to save in the cookie session
