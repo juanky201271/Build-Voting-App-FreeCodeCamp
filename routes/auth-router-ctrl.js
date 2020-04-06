@@ -50,7 +50,7 @@ router.get("/auth/twitter", passport.authenticate("twitter"))
 // redirect to home page after successfully login via twitter
 router.get("/auth/twitter/redirect", (req, res) => {
   passport.authenticate("twitter", {
-    successRedirect: "/", //CLIENT_HOME_PAGE_URL,
+    successRedirect: CLIENT_HOME_PAGE_URL,
     failureRedirect: "/auth/login/failed"
   })
 })
