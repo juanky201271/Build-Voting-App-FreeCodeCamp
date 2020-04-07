@@ -12,14 +12,13 @@ const authRouter = require("./routes/auth-router-ctrl")
 const pollRouter = require('./routes/poll-router')
 const userRouter = require('./routes/user-router')
 const mongoose = require("mongoose")
-//const keys = require("./config/keys")
 const cors = require("cors")
 const cookieParser = require("cookie-parser")
 const proxy = require('http-proxy-middleware')
 
 module.exports = function(app) {
     // add other server routes to path array
-    app.use(proxy(['/api' ], { target: 'http://localhost:8000' }));
+    app.use(proxy(['/api' ], { target: 'https://bva-jccc-fcc.herokuapp.com' }));
 }
 
 const db = require('./db')
@@ -30,7 +29,7 @@ app.use(
   cookieSession({
     name: "session",
     keys: [process.env.COOKIE_KEY],
-    maxAge: 30 * 24 * 60 * 60 * 1000
+    maxAge: 30 * 24 * 60 * 60 * 10000
   })
 )
 
@@ -40,11 +39,11 @@ app.use(passport.session())
 
 app.use(
   cors(
-    //{
-    //origin: ["https://bva-jccc-fcc.herokuapp.com","https://api.twitter.com"], // "http://localhost:3000",  // allow to server to accept request from different origin (React)
-    //methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    //credentials: true // allow session cookie from browser to pass through
-    //}
+    {
+    origin: ["https://bva-jccc-fcc.herokuapp.com","https://api.twitter.com"], // "http://localhost:3000",  // allow to server to accept request from different origin (React)
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true // allow session cookie from browser to pass through
+    }
   )
 )
 
