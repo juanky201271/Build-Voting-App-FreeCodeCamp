@@ -22,7 +22,7 @@ class Links extends Component {
   }
   _handleLogoutClick = () => {
     //window.open("https://bva-jccc-fcc.herokuapp.com/api/auth/logout", "_self") // express
-    await fetch("https://bva-jccc-fcc.herokuapp.com/api/auth/logout", {
+    await fetch("/api/auth/logout", {
       method: "GET",
     })
       .catch(error => {
@@ -33,7 +33,7 @@ class Links extends Component {
   }
   _handleLoginClick = async () => {
     //window.open("https://bva-jccc-fcc.herokuapp.com/api/auth/twitter", "_self")
-    await fetch("https://bva-jccc-fcc.herokuapp.com/api/auth/twitter", {
+    await fetch("/api/auth/twitter", {
       method: "GET",
     })
       .catch(error => {
