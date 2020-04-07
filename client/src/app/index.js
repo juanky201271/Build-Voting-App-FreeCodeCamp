@@ -111,7 +111,7 @@ class App extends Component {
               <Route path="/poll/update/:_id" exact component={PollsUpdate} />
               <Route path="/poll/details/:_id" exact component={PollsDetails} />
               <Route path="/mypolls" exact component={MyPollsList} />
-              <Route exact path="/" render={() => (<Redirect to="/polls" />)} />
+              <Redirect to="/polls" />
             </Switch>
           </>
          )
@@ -127,7 +127,7 @@ class App extends Component {
             <Switch>
               <Route path="/polls" exact component={PollsList} />
               <Route path="/poll/details/:_id" exact component={PollsDetails} />
-              <Route exact path="/" render={() => (<Redirect to="/polls" />)} />
+              <Redirect to="/polls" />
             </Switch>
           </>
          )
