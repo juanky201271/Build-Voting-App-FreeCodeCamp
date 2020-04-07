@@ -25,7 +25,7 @@ class PollsList extends Component {
         this.setState({ isLoading: true })
 
         var ip = ''
-        await fetch("https://bva-jccc-fcc.herokuapp.com/api/auth/login/success", {
+        await fetch("/api/auth/login/success", {
           method: "GET",
           credentials: "include",
           headers: {

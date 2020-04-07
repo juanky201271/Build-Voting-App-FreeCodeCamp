@@ -1,7 +1,6 @@
 const router = require("express").Router()
 const passport = require("passport")
-const CLIENT_HOME_PAGE_URL = "https://bva-jccc-fcc.herokuapp.com/"
-// ( !process.env.MONGOLAB_YELLOW_URI ? "http://localhost:3000/polls" : "https://bva-jccc-fcc.herokuapp.com/polls" ) // React 3000
+const CLIENT_HOME_PAGE_URL = "/" //"https://bva-jccc-fcc.herokuapp.com/"
 
 // when login is successful, retrieve user info
 router.get("/auth/login/success", (req, res) => {
@@ -47,11 +46,9 @@ router.get("/auth/logout", (req, res) => {
 router.get("/auth/twitter", passport.authenticate("twitter"))
 
 // redirect to home page after successfully login via twitter
-router.get("/auth/twitter/redirect", (req, res) => {
-  passport.authenticate("twitter", {
-    successRedirect: CLIENT_HOME_PAGE_URL,
-    failureRedirect: "/auth/login/failed"
-  })
+router.get("/auth/twitter/redirect", passport.authenticate("twitter", { failureRedirect: "/auth/login/failed" }),
+  function(req, res) {
+    res.redirect(CLIENT_HOME_PAGE_URL)
 })
 
 module.exports = router

@@ -22,9 +22,15 @@ class Links extends Component {
   }
   _handleLogoutClick = () => {
     //window.open("https://bva-jccc-fcc.herokuapp.com/api/auth/logout", "_self") // express
-    await fetch("/api/auth/logout", {
+    await fetch("/api/auth/logout", { // express
       method: "GET",
-    })
+      credentials: "include",
+      headers: {
+        Accept:
+        "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Credentials": true
+      })
       .catch(error => {
         console.log(error)
       })
@@ -33,9 +39,15 @@ class Links extends Component {
   }
   _handleLoginClick = async () => {
     //window.open("https://bva-jccc-fcc.herokuapp.com/api/auth/twitter", "_self")
-    await fetch("/api/auth/twitter", {
+    await fetch("/api/auth/twitter", { // express
       method: "GET",
-    })
+      credentials: "include",
+      headers: {
+        Accept:
+        "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Credentials": true
+      })
       .catch(error => {
         console.log(error)
       })

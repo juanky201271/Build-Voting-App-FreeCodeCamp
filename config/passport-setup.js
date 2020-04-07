@@ -24,7 +24,8 @@ passport.use(
     {
       consumerKey: process.env.TWITTER_CONSUMER_KEY,
       consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
-      callbackURL: "https://bva-jccc-fcc.herokuapp.com/api/auth/twitter/redirect",
+      callbackURL: "/api/auth/twitter/redirect",
+      proxy: trustProxy,
     },
     async (token, tokenSecret, profile, done) => {
       //console.log(profile)

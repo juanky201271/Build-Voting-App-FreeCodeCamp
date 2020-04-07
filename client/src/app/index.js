@@ -24,7 +24,7 @@ class App extends Component {
     })
 
     var ip = ''
-    await fetch("https://bva-jccc-fcc.herokuapp.com/api/auth/login/success", { // express
+    await fetch("/api/auth/login/success", { // express
       method: "GET",
       credentials: "include",
       headers: {

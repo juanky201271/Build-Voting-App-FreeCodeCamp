@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: 'https://bva-jccc-fcc.herokuapp.com/api' // express
+  baseURL: '/api' // express
 })
 
 export const insertPoll = payload => api.post(`/poll`, payload)
