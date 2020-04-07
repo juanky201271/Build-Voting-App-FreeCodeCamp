@@ -21,12 +21,25 @@ class Links extends Component {
     }
   }
   _handleLogoutClick = () => {
-    window.open("https://bva-jccc-fcc.herokuapp.com/api/auth/logout", "_self") // express
+    //window.open("https://bva-jccc-fcc.herokuapp.com/api/auth/logout", "_self") // express
+    await fetch("https://bva-jccc-fcc.herokuapp.com/api/auth/logout", {
+      method: "GET",
+    })
+      .catch(error => {
+        console.log(error)
+      })
     this.props.handleNotAuthenticated()
     this.setState({ authenticated: false, twitterId: '', user: '', })
   }
-  _handleLoginClick = () => {
-    window.open("https://bva-jccc-fcc.herokuapp.com/api/auth/twitter", "_self")
+  _handleLoginClick = async () => {
+    //window.open("https://bva-jccc-fcc.herokuapp.com/api/auth/twitter", "_self")
+    await fetch("https://bva-jccc-fcc.herokuapp.com/api/auth/twitter", {
+      method: "GET",
+    })
+      .catch(error => {
+        console.log(error)
+      })
+
   }
   render() {
     console.log('links', this.state)
