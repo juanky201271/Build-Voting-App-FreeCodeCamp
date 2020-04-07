@@ -4,10 +4,11 @@
   "description": "Build a Voting App",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "keywords": [],
-  "author": "",
+  "author": "juanky201271",
   "license": "ISC",
   "engines": {
     "node": "13.9.x",
@@ -27,6 +28,5 @@
     "passport": "^0.4.1",
     "passport-twitter": "^1.0.4",
     "path": "^0.12.7"
-  },
-  "proxy": "http://localhost:8000"
+  }
 }

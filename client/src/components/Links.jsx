@@ -20,37 +20,39 @@ class Links extends Component {
       //isLoading: false,
     }
   }
-  _handleLogoutClick = () => {
-    //window.open("https://bva-jccc-fcc.herokuapp.com/api/auth/logout", "_self") // express
-    await fetch("/api/auth/logout", { // express
-      method: "GET",
-      credentials: "include",
-      headers: {
-        Accept:
-        "application/json",
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Credentials": true
-      })
-      .catch(error => {
-        console.log(error)
-      })
+  _handleLogoutClick = async () => {
+    window.open("http://localhost:8000/api/auth/logout", "_self") // express
+    //await fetch("http://localhost:8000/api/auth/logout", { // express
+    //  method: "GET",
+    //  credentials: "include",
+    //  headers: {
+    //    Accept:
+    //    "application/json",
+    //    "Content-Type": "application/json",
+    //    "Access-Control-Allow-Credentials": true
+    //    }
+    //  })
+    //  .catch(error => {
+    //    console.log(error)
+    //  })
     this.props.handleNotAuthenticated()
     this.setState({ authenticated: false, twitterId: '', user: '', })
   }
   _handleLoginClick = async () => {
-    //window.open("https://bva-jccc-fcc.herokuapp.com/api/auth/twitter", "_self")
-    await fetch("/api/auth/twitter", { // express
-      method: "GET",
-      credentials: "include",
-      headers: {
-        Accept:
-        "application/json",
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Credentials": true
-      })
-      .catch(error => {
-        console.log(error)
-      })
+    window.open("http://localhost:8000/api/auth/twitter", "_self")
+    //await fetch("http://localhost/api/auth/twitter", { // express
+    //  method: "GET",
+    //  credentials: "include",
+    //  headers: {
+    //    Accept:
+    //    "application/json",
+    //    "Content-Type": "application/json",
+    //    "Access-Control-Allow-Credentials": true
+    //    }
+    //  })
+    //  .catch(error => {
+    //    console.log(error)
+    //  })
 
   }
   render() {

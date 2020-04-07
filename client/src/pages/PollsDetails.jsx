@@ -141,7 +141,7 @@ class PollsDetails extends Component {
         })
       }
 
-      window.location.href = '/mypolls'
+      window.location.href = '/polls'
     }
     componentDidMount = async () => {
       var { _id, authenticated, twitterId, ip, userVotes, } = this.state
@@ -241,7 +241,7 @@ class PollsDetails extends Component {
                     ref={this.extraInputRef}
                 />
                 <Button onClick={this.handleVotePoll} id="updateButton" ref={this.updateButtonRef}>Vote</Button>
-                <CancelButton href={'/mypolls'}>Cancel</CancelButton>
+                <CancelButton href={'/polls'}>Cancel</CancelButton>
                 <ShareButton onClick={() => this.handleShare(url)} id="shareButton" ref={this.shareButtonRef}>Share on Twitter</ShareButton>
               </WrapperLeft>
               <WrapperRigth>

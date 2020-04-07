@@ -40,7 +40,7 @@ app.use(passport.session())
 app.use(
   cors(
     {
-    origin: ["https://bva-jccc-fcc.herokuapp.com","https://api.twitter.com"], // "http://localhost:3000",  // allow to server to accept request from different origin (React)
+    origin: ["https://bva-jccc-fcc.herokuapp.com", "https://api.twitter.com", "http://localhost:3000"], // "http://localhost:3000",  // allow to server to accept request from different origin (React)
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true // allow session cookie from browser to pass through
     }
@@ -54,9 +54,11 @@ app.use('/api', pollRouter)
 app.use('/api', userRouter)
 app.use('/api', authRouter)
 
-app.use(express.static(path.join(__dirname, "client", "build")))
-app.get('*', (req,res) => {
-  res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
-})
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, "client", "build")))
+  app.get('*', (req,res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+  })
+}
 
 app.listen(PORT, () => console.log(`Server on Port ${PORT}`))
