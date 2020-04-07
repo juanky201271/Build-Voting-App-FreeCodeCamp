@@ -25,7 +25,7 @@ passport.use(
       consumerKey: process.env.TWITTER_CONSUMER_KEY,
       consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
       callbackURL: "/api/auth/twitter/redirect",
-      proxy: trustProxy,
+      proxy: true,
     },
     async (token, tokenSecret, profile, done) => {
       //console.log(profile)
