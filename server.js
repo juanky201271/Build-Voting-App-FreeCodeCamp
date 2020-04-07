@@ -15,6 +15,12 @@ const mongoose = require("mongoose")
 //const keys = require("./config/keys")
 const cors = require("cors")
 const cookieParser = require("cookie-parser")
+const proxy = require('http-proxy-middleware')
+
+module.exports = function(app) {
+    // add other server routes to path array
+    app.use(proxy(['/api' ], { target: 'http://localhost:8000' }));
+}
 
 const db = require('./db')
 
