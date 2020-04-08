@@ -21,20 +21,20 @@ class Links extends Component {
     }
   }
   _handleLogoutClick = async () => {
-    //window.open("http://localhost:8000/api/auth/logout", "_self") // express
-    await fetch("/api/auth/logout", { // express
-      method: "GET",
-      credentials: "include",
-      headers: {
-        Accept:
-        "application/json",
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Credentials": true
-        }
-      })
-      .catch(error => {
-        console.log(error)
-      })
+    window.open("/api/auth/logout", "_self") // express
+    //await fetch("/api/auth/logout", { // express
+    //  method: "GET",
+    //  credentials: "include",
+    //  headers: {
+    //    Accept:
+    //    "application/json",
+    //    "Content-Type": "application/json",
+    //    "Access-Control-Allow-Credentials": true
+    //    }
+    //  })
+    //  .catch(error => {
+    //    console.log(error)
+    //  })
     this.props.handleNotAuthenticated()
     this.setState({ authenticated: false, twitterId: '', user: '', })
   }

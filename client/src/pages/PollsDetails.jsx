@@ -84,7 +84,8 @@ class PollsDetails extends Component {
         const extraOption = event.target.value
         this.setState({ extraOption })
     }
-    handleVotePoll = async () => {
+    handleVotePoll = async (event) => {
+      event.preventDefault();
       const { _id, question, answers, extraOption, vote, authenticated, twitterId, ip, } = this.state
       if (!vote) return
       if (!extraOption && vote.trim() === "I'd like a custom option") return
@@ -141,7 +142,7 @@ class PollsDetails extends Component {
         })
       }
 
-      window.location.href = '/polls'
+      window.location.href = '/'
     }
     componentDidMount = async () => {
       var { _id, authenticated, twitterId, ip, userVotes, } = this.state
@@ -241,7 +242,7 @@ class PollsDetails extends Component {
                     ref={this.extraInputRef}
                 />
                 <Button onClick={this.handleVotePoll} id="updateButton" ref={this.updateButtonRef}>Vote</Button>
-                <CancelButton href={'/polls'}>Cancel</CancelButton>
+                <CancelButton href={'/'}>Cancel</CancelButton>
                 <ShareButton onClick={() => this.handleShare(url)} id="shareButton" ref={this.shareButtonRef}>Share on Twitter</ShareButton>
               </WrapperLeft>
               <WrapperRigth>

@@ -106,6 +106,7 @@ class App extends Component {
               user={user}
             />
             <Switch>
+              <Route path="/" exact component={PollsList} />
               <Route path="/polls" exact component={PollsList} />
               <Route path="/poll/insert" exact component={PollsInsert} />
               <Route path="/poll/update/:_id" exact component={PollsUpdate} />
@@ -124,6 +125,7 @@ class App extends Component {
               user={user}
             />
             <Switch>
+              <Route path="/" exact component={PollsList} />
               <Route path="/polls" exact component={PollsList} />
               <Route path="/poll/details/:_id" exact component={PollsDetails} />
             </Switch>

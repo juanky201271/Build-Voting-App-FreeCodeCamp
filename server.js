@@ -1,20 +1,20 @@
+require("dotenv").config()
 const cookieSession = require("cookie-session")
 const path = require("path")
 const express = require("express")
-require("dotenv").config()
 const app = express()
 const PORT = process.env.PORT || 8000 // express
 const passport = require("passport")
 const bodyParser = require('body-parser')
-const passportSetup = require("./config/passport-setup")
-const session = require("express-session")
-const authRouter = require("./routes/auth-router-ctrl")
-const pollRouter = require('./routes/poll-router')
-const userRouter = require('./routes/user-router')
 const mongoose = require("mongoose")
 const cors = require("cors")
 const cookieParser = require("cookie-parser")
+const session = require("express-session")
 
+const passportSetup = require("./config/passport-setup")
+const authRouter = require("./routes/auth-router-ctrl")
+const pollRouter = require('./routes/poll-router')
+const userRouter = require('./routes/user-router')
 const db = require('./db')
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
@@ -33,11 +33,11 @@ app.use(passport.session())
 
 app.use(
   cors(
-    {
-    origin: ["https://bva-jccc-fcc.herokuapp.com", "https://api.twitter.com", "http://localhost:3000"], // "http://localhost:3000",  // allow to server to accept request from different origin (React)
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true // allow session cookie from browser to pass through
-    }
+    //{
+    //origin: ["https://bva-jccc-fcc.herokuapp.com", "https://api.twitter.com", "http://localhost:3000", "http://localhost:8000"], // "http://localhost:3000",  // allow to server to accept request from different origin (React)
+    //methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    //credentials: true // allow session cookie from browser to pass through
+    //}
   )
 )
 
@@ -48,11 +48,10 @@ app.use('/api', pollRouter)
 app.use('/api', userRouter)
 app.use('/api', authRouter)
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, "client", "build")))
-  app.get('*', (req,res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
-  })
-}
+app.use(express.static(path.join(__dirname, "client/build")))
+
+app.use(function(req, res) {
+	res.sendFile(path.join(__dirname, '../client/build/index.html'))
+})
 
 app.listen(PORT, () => console.log(`Server on Port ${PORT}`))

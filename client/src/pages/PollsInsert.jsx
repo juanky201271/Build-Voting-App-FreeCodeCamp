@@ -33,7 +33,8 @@ class PollsInsert extends Component {
         const answers = event.target.value
         this.setState({ answers })
     }
-    handleIncludePoll = async () => {
+    handleIncludePoll = async (event) => {
+        event.preventDefault();
         const { question, answers, } = this.state
         const { twitterId, ip, } = this.props.location.state
         const arrayAnswers = answers.split('/')
@@ -56,7 +57,7 @@ class PollsInsert extends Component {
           console.log(error)
         })
 
-        window.location.href = '/polls'
+        window.location.href = '/'
     }
     render() {
       console.log('insert', this.state)
@@ -81,7 +82,7 @@ class PollsInsert extends Component {
                 />
 
                 <Button onClick={this.handleIncludePoll}>Add Poll</Button>
-                <CancelButton href={'/polls'}>Cancel</CancelButton>
+                <CancelButton href={'/'}>Cancel</CancelButton>
             </Wrapper>
         )
     }
