@@ -60,7 +60,7 @@ class Links extends Component {
     const { authenticated, twitterId, ip, user, } = this.state
     return (
       <React.Fragment>
-        <Link to={{ pathname: "/polls",
+        <Link to={{ pathname: "/",
                     state: {
                       authenticated: authenticated,
                       twitterId: twitterId,
@@ -76,7 +76,7 @@ class Links extends Component {
           <List>
 
             <Item>
-              <Link to={{ pathname: "/polls",
+              <Link to={{ pathname: "/",
                           state: {
                             authenticated: authenticated,
                             twitterId: twitterId,
