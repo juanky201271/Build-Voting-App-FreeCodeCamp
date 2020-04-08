@@ -215,6 +215,14 @@ class MyPollsList extends Component {
                         minRows={0}
                     />
                 )}
+
+                {!showTable && (
+                    <h2>No Polls</h2>
+                )}
+
+                {!isLoading && (
+                    <h2>Loading Polls</h2>
+                )}
             </Wrapper>
         )
     }
