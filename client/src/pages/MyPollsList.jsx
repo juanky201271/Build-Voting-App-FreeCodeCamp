@@ -68,7 +68,7 @@ class DeletePoll extends Component {
         console.log(error)
       })
 
-      window.location.reload()
+      window.location.href = '/'
     }
   }
   render() {
