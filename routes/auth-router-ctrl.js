@@ -1,6 +1,6 @@
 const router = require("express").Router()
 const passport = require("passport")
-const CLIENT_HOME_PAGE_URL = "http://localhost:3000/polls" //"https://bva-jccc-fcc.herokuapp.com/"
+const CLIENT_HOME_PAGE_URL = process.env.PUBLIC_URL //"http://localhost:3000/polls" //"https://bva-jccc-fcc.herokuapp.com/"
 
 // when login is successful, retrieve user info
 router.get("/auth/login/success", (req, res) => {

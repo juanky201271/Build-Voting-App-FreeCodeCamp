@@ -14,12 +14,6 @@ const userRouter = require('./routes/user-router')
 const mongoose = require("mongoose")
 const cors = require("cors")
 const cookieParser = require("cookie-parser")
-//const proxy = require('http-proxy-middleware')
-
-//module.exports = function(app) {
-    // add other server routes to path array
-//    app.use(proxy(['/api' ], { target: 'https://bva-jccc-fcc.herokuapp.com' }));
-//}
 
 const db = require('./db')
 

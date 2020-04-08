@@ -60,7 +60,7 @@ class PollsUpdate extends Component {
         console.log(error)
       })
 
-      window.location.href = '/mypolls'
+      window.location.href = '/polls'
     }
     componentDidMount = async () => {
       var { _id, votes } = this.state
@@ -108,7 +108,7 @@ class PollsUpdate extends Component {
                 />
 
                 <Button id="updateButton" onClick={this.handleUpdatePoll} ref={this.updateButtonRef}>Update Poll</Button>
-                <CancelButton href={'/mypolls'}>Cancel</CancelButton>
+                <CancelButton href={'/polls'}>Cancel</CancelButton>
             </Wrapper>
         )
     }

@@ -56,7 +56,7 @@ class PollsInsert extends Component {
           console.log(error)
         })
 
-        window.location.href = '/mypolls'
+        window.location.href = '/polls'
     }
     render() {
       console.log('insert', this.state)
@@ -81,7 +81,7 @@ class PollsInsert extends Component {
                 />
 
                 <Button onClick={this.handleIncludePoll}>Add Poll</Button>
-                <CancelButton href={'/mypolls'}>Cancel</CancelButton>
+                <CancelButton href={'/polls'}>Cancel</CancelButton>
             </Wrapper>
         )
     }
