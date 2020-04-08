@@ -105,6 +105,9 @@ class MyPollsList extends Component {
       })
       .catch(error => {
         console.log(error)
+        this.setState({
+            isLoading: false,
+        })
       })
 
     }
@@ -217,11 +220,11 @@ class MyPollsList extends Component {
                 )}
 
                 {!showTable && (
-                    <h2>No Polls</h2>
+                    <h3>No Polls</h3>
                 )}
 
-                {!isLoading && (
-                    <h2>Loading Polls</h2>
+                {isLoading && (
+                    <h3>Loading Polls</h3>
                 )}
             </Wrapper>
         )

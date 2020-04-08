@@ -71,6 +71,9 @@ class PollsList extends Component {
         })
         .catch(error => {
           console.log(error)
+          this.setState({
+              isLoading: false,
+          })
         })
 
     }
@@ -162,6 +165,14 @@ class PollsList extends Component {
                         showPageSizeOptions={true}
                         minRows={0}
                     />
+                )}
+
+                {!showTable && (
+                    <h3>No Polls</h3>
+                )}
+
+                {isLoading && (
+                    <h3>Loading Polls</h3>
                 )}
             </Wrapper>
         )
