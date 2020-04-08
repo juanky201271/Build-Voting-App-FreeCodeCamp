@@ -220,7 +220,7 @@ class MyPollsList extends Component {
                 )}
 
                 {!showTable && (
-                    <h3>No Polls</h3>
+                    <hr />
                 )}
 
                 {isLoading && (
